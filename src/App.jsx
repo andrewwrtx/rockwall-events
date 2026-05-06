@@ -4,6 +4,7 @@ import CategoryPage from './pages/CategoryPage'
 import SubmitEvent from './pages/SubmitEvent'
 import Admin from './pages/Admin'
 import FeaturedSuccess from './pages/FeaturedSuccess'
+import CalendarPage from './pages/CalendarPage'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
@@ -16,7 +17,7 @@ function Layout() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
       <main className="flex-1">
         <Routes>
@@ -25,6 +26,7 @@ function Layout() {
           <Route path="/submit" element={<SubmitEvent />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/featured-success" element={<FeaturedSuccess />} />
+          <Route path="/calendar" element={<CalendarPage />} />
         </Routes>
       </main>
       <Footer />

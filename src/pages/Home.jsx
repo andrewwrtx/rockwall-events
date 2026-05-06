@@ -5,16 +5,16 @@ import EventCard from '../components/EventCard'
 import NewsletterSignup from '../components/NewsletterSignup'
 
 const categories = [
-  { id: 'music', label: 'Music & Live Entertainment', emoji: '🎵', color: 'bg-purple-500' },
-  { id: 'food', label: 'Food & Drink', emoji: '🍕', color: 'bg-orange-500' },
-  { id: 'arts', label: 'Arts & Culture', emoji: '🎨', color: 'bg-pink-500' },
-  { id: 'sports', label: 'Sports & Recreation', emoji: '⚽', color: 'bg-green-500' },
-  { id: 'family', label: 'Family & Kids', emoji: '👨‍👩‍👧', color: 'bg-yellow-500' },
-  { id: 'theater', label: 'Theater & Comedy', emoji: '🎭', color: 'bg-red-500' },
-  { id: 'business', label: 'Business & Networking', emoji: '💼', color: 'bg-blue-500' },
-  { id: 'education', label: 'Education & Workshops', emoji: '📚', color: 'bg-indigo-500' },
-  { id: 'community', label: 'Community & Charity', emoji: '🤝', color: 'bg-teal-500' },
-  { id: 'festivals', label: 'Festivals & Fairs', emoji: '🎪', color: 'bg-rose-500' },
+  { id: 'music', label: 'Music', dot: 'bg-purple-500' },
+  { id: 'food', label: 'Food & Drink', dot: 'bg-orange-500' },
+  { id: 'arts', label: 'Arts & Culture', dot: 'bg-pink-500' },
+  { id: 'sports', label: 'Sports', dot: 'bg-green-500' },
+  { id: 'family', label: 'Family & Kids', dot: 'bg-yellow-500' },
+  { id: 'theater', label: 'Theater', dot: 'bg-red-500' },
+  { id: 'business', label: 'Business', dot: 'bg-blue-500' },
+  { id: 'education', label: 'Education', dot: 'bg-indigo-500' },
+  { id: 'community', label: 'Community', dot: 'bg-teal-500' },
+  { id: 'festivals', label: 'Festivals', dot: 'bg-rose-500' },
 ]
 
 function Home() {
@@ -47,51 +47,54 @@ function Home() {
   const upcomingEvents = events.filter(function(e) { return !e.is_featured }).slice(0, 6)
 
   return (
-    <div>
-      <div className="bg-blue-700 text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">
+    <div className="bg-white">
+
+      <div className="bg-gray-900 py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-5xl font-bold text-white mb-4 tracking-tight leading-tight">
             What's happening in Rockwall?
           </h1>
-          <p className="text-blue-100 text-lg mb-8">
-            Your go-to guide for events in Rockwall, TX
+          <p className="text-gray-400 text-lg mb-10">
+            The definitive guide to events in Rockwall, TX
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="#events"
-              className="bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition"
+              className="bg-white text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition"
             >
               Browse Events
             </a>
-            <a
-              href="/submit"
-              className="border-2 border-white text-white font-bold px-6 py-3 rounded-lg hover:bg-white hover:text-blue-700 transition"
+            <Link
+              to="/calendar"
+              className="border border-gray-600 text-gray-300 font-semibold px-6 py-3 rounded-lg hover:border-gray-400 hover:text-white transition"
             >
-              Submit Your Event
-            </a>
+              View Calendar
+            </Link>
+            <Link
+              to="/submit"
+              className="border border-gray-600 text-gray-300 font-semibold px-6 py-3 rounded-lg hover:border-gray-400 hover:text-white transition"
+            >
+              Submit an Event
+            </Link>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">
 
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Browse by Category</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Browse by Category</p>
+          <div className="flex flex-wrap gap-2">
             {categories.map(function(cat) {
               return (
                 <Link
                   key={cat.id}
                   to={'/category/' + cat.id}
-                  className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition border border-gray-100 text-center"
+                  className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 hover:border-gray-400 hover:shadow-sm transition group"
                 >
-                  <div className={cat.color + ' text-white text-2xl w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2'}>
-                    {cat.emoji}
-                  </div>
-                  <p className="font-medium text-gray-800 text-sm leading-tight">{cat.label}</p>
-                  <p className="text-gray-400 text-xs mt-1">
-                    {categoryCounts[cat.id] || 0} events
-                  </p>
+                  <span className={cat.dot + ' w-2 h-2 rounded-full'}></span>
+                  <span className="text-gray-700 text-sm font-medium group-hover:text-gray-900">{cat.label}</span>
+                  <span className="text-gray-400 text-xs">{categoryCounts[cat.id] || 0}</span>
                 </Link>
               )
             })}
@@ -100,7 +103,7 @@ function Home() {
 
         {featuredEvents.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Events</h2>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Featured Events</p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {featuredEvents.map(function(event) {
                 return <EventCard key={event.id} event={event} />
@@ -110,19 +113,31 @@ function Home() {
         )}
 
         <section id="events">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Upcoming Events</h2>
-            <span className="text-gray-500 text-sm">{events.length} total events</span>
+          <div className="flex items-center justify-between mb-4">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Upcoming Events</p>
+            <Link to="/calendar" className="text-blue-500 text-sm hover:text-blue-700 transition">
+              View calendar →
+            </Link>
           </div>
           {loading ? (
-            <div className="text-center py-12 text-gray-400">Loading events...</div>
+            <div className="text-center py-16 text-gray-400">Loading events...</div>
           ) : events.length === 0 ? (
-            <div className="text-center py-12 text-gray-400">No events yet - check back soon!</div>
+            <div className="text-center py-16 text-gray-400">No events yet — check back soon!</div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {upcomingEvents.map(function(event) {
                 return <EventCard key={event.id} event={event} />
               })}
+            </div>
+          )}
+          {events.length > 6 && (
+            <div className="text-center mt-8">
+              <Link
+                to="/calendar"
+                className="border border-gray-300 text-gray-600 px-6 py-3 rounded-lg text-sm hover:border-gray-500 hover:text-gray-900 transition inline-block"
+              >
+                View all {events.length} events →
+              </Link>
             </div>
           )}
         </section>
