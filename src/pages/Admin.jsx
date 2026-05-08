@@ -116,7 +116,7 @@ function Admin() {
           <div className="text-center mb-6">
             <div className="text-4xl mb-2">🔐</div>
             <h1 className="text-2xl font-bold text-gray-900">Admin Login</h1>
-            <p className="text-gray-500 text-sm mt-1">Rockwall Events Admin Panel</p>
+            <p className="text-gray-500 text-sm mt-1">Rockwall County Events Admin Panel</p>
           </div>
           {passwordError && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg mb-4 text-sm">
@@ -146,7 +146,7 @@ function Admin() {
     <div className="min-h-screen bg-gray-100">
       <div className="bg-white shadow-sm px-6 py-4 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Rockwall Events — Admin</h1>
+          <h1 className="text-xl font-bold text-gray-900">Rockwall County Events — Admin</h1>
           <p className="text-gray-500 text-sm">Manage submissions and events</p>
         </div>
         <a href="/" className="text-blue-600 text-sm hover:underline">View Site</a>

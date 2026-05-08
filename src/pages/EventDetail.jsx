@@ -177,7 +177,7 @@ function EventDetail() {
 
         <div className="mt-6 text-center">
           <Link to="/" className="text-gray-400 hover:text-gray-700 text-sm transition">
-            See all Rockwall events
+            See all Rockwall County Events
           </Link>
         </div>
 

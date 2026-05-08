@@ -36,12 +36,12 @@ function NewsletterSignup() {
         {status === 'success' ? (
           <div>
             <p className="text-2xl font-bold text-white mb-2">You're in!</p>
-            <p className="text-gray-400 text-sm">Weekly Rockwall events delivered to your inbox every Thursday.</p>
+            <p className="text-gray-400 text-sm">Weekly Rockwall County Events delivered to your inbox every Thursday.</p>
           </div>
         ) : (
           <div>
             <h3 className="text-2xl font-bold text-white mb-2">Never miss an event</h3>
-            <p className="text-gray-400 text-sm mb-7">Weekly roundup of upcoming Rockwall events, every Thursday.</p>
+            <p className="text-gray-400 text-sm mb-7">Weekly roundup of upcoming Rockwall County Events, every Thursday.</p>
 
             {status === 'already' && (
               <p className="text-gray-400 text-sm mb-4">You're already subscribed!</p>

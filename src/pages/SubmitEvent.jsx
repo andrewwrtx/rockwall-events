@@ -85,7 +85,7 @@ function SubmitEvent() {
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <div className="text-6xl mb-4">🎉</div>
         <h1 className="text-3xl font-bold text-gray-900 mb-3">Event Submitted!</h1>
-        <p className="text-gray-600 text-lg mb-2">Thanks for submitting your event to Rockwall Events.</p>
+        <p className="text-gray-600 text-lg mb-2">Thanks for submitting your event to Rockwall County Events.</p>
         <p className="text-gray-500 mb-8">We'll review it and get it posted within 24 hours. You'll hear from us at <strong>{form.contact_email}</strong>.</p>
 
         <div className="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-6 mb-8">

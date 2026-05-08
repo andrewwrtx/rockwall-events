@@ -11,7 +11,7 @@ function Navbar() {
     <nav className="bg-gray-900 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-white font-bold text-lg tracking-tight">Rockwall Events</span>
+          <span className="text-white font-bold text-lg tracking-tight">Rockwall County Events</span>
         </Link>
         <div className="flex items-center gap-6">
           <Link to="/" className={isActive('/') ? 'text-sm font-medium text-white' : 'text-sm font-medium text-gray-400 hover:text-white transition'}>
