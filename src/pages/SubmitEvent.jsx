@@ -108,10 +108,7 @@ function SubmitEvent() {
         </div>
 
         <div className="flex gap-3 justify-center">
-          <a
-            href="/"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition"
-          >
+          <a href="/" className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition">
             Back to Home
           </a>
           <button
@@ -131,12 +128,12 @@ function SubmitEvent() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-8">
-        <a href="/" className="text-blue-600 hover:underline text-sm">Back to Home</a>
+        <a href="/" className="text-gray-400 hover:text-gray-700 text-sm transition">← Back to Home</a>
         <h1 className="text-3xl font-bold text-gray-900 mt-3 mb-1">Submit an Event</h1>
         <p className="text-gray-500">Share what's happening in Rockwall! All submissions are reviewed before going live.</p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
 
         {errorMsg && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm">
@@ -145,134 +142,58 @@ function SubmitEvent() {
         )}
 
         <div className="space-y-5">
-
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Event Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="title"
-              value={form.title}
-              onChange={handleChange}
-              placeholder="e.g. Rockwall Farmers Market"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <label className="block text-sm font-semibold text-gray-700 mb-1">Event Name <span className="text-red-500">*</span></label>
+            <input type="text" name="title" value={form.title} onChange={handleChange} placeholder="e.g. Rockwall Farmers Market" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Date <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="date"
-                name="date"
-                value={form.date}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <label className="block text-sm font-semibold text-gray-700 mb-1">Date <span className="text-red-500">*</span></label>
+              <input type="date" name="date" value={form.date} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Time</label>
-              <input
-                type="text"
-                name="time"
-                value={form.time}
-                onChange={handleChange}
-                placeholder="e.g. 6:00 PM - 9:00 PM"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <input type="text" name="time" value={form.time} onChange={handleChange} placeholder="e.g. 6:00 PM - 9:00 PM" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Category <span className="text-red-500">*</span>
-            </label>
-            <select
-              name="category"
-              value={form.category}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
+            <label className="block text-sm font-semibold text-gray-700 mb-1">Category <span className="text-red-500">*</span></label>
+            <select name="category" value={form.category} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400">
               <option value="">Select a category...</option>
-              {categories.map(function(cat) {
-                return <option key={cat.id} value={cat.id}>{cat.label}</option>
-              })}
+              {categories.map(function(cat) { return <option key={cat.id} value={cat.id}>{cat.label}</option> })}
             </select>
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Description</label>
-            <textarea
-              name="description"
-              value={form.description}
-              onChange={handleChange}
-              placeholder="Tell people what to expect..."
-              rows={4}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-            />
+            <textarea name="description" value={form.description} onChange={handleChange} placeholder="Tell people what to expect..." rows={4} className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none" />
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Venue Name</label>
-            <input
-              type="text"
-              name="location_name"
-              value={form.location_name}
-              onChange={handleChange}
-              placeholder="e.g. Rockwall Harbor"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="text" name="location_name" value={form.location_name} onChange={handleChange} placeholder="e.g. Rockwall Harbor" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Address</label>
-            <input
-              type="text"
-              name="address"
-              value={form.address}
-              onChange={handleChange}
-              placeholder="e.g. 2060 Summer Lee Dr, Rockwall, TX"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="text" name="address" value={form.address} onChange={handleChange} placeholder="e.g. 2060 Summer Lee Dr, Rockwall, TX" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Price / Cost</label>
-            <input
-              type="text"
-              name="price"
-              value={form.price}
-              onChange={handleChange}
-              placeholder="e.g. Free, $10, $5-15"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="text" name="price" value={form.price} onChange={handleChange} placeholder="e.g. Free, $10, $5-15" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Event Website</label>
-            <input
-              type="url"
-              name="website_url"
-              value={form.website_url}
-              onChange={handleChange}
-              placeholder="https://..."
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="url" name="website_url" value={form.website_url} onChange={handleChange} placeholder="https://..." className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Ticket Link</label>
-            <input
-              type="url"
-              name="ticket_url"
-              value={form.ticket_url}
-              onChange={handleChange}
-              placeholder="https://..."
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="url" name="ticket_url" value={form.ticket_url} onChange={handleChange} placeholder="https://..." className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
           </div>
 
           <div className="border-t border-gray-100 pt-5">
@@ -280,27 +201,11 @@ function SubmitEvent() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-gray-600 mb-1">Your Name</label>
-                <input
-                  type="text"
-                  name="submitter_name"
-                  value={form.submitter_name}
-                  onChange={handleChange}
-                  placeholder="Jane Smith"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <input type="text" name="submitter_name" value={form.submitter_name} onChange={handleChange} placeholder="Jane Smith" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
               </div>
               <div>
-                <label className="block text-sm text-gray-600 mb-1">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="contact_email"
-                  value={form.contact_email}
-                  onChange={handleChange}
-                  placeholder="jane@example.com"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <label className="block text-sm text-gray-600 mb-1">Email <span className="text-red-500">*</span></label>
+                <input type="email" name="contact_email" value={form.contact_email} onChange={handleChange} placeholder="jane@example.com" className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400" />
               </div>
             </div>
             <p className="text-xs text-gray-400 mt-2">Your email is only used to notify you when your event is approved. It won't be shown publicly.</p>
@@ -309,11 +214,10 @@ function SubmitEvent() {
           <button
             onClick={handleSubmit}
             disabled={status === 'loading'}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-gray-900 text-white py-3 rounded-lg font-bold text-lg hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {status === 'loading' ? 'Submitting...' : 'Submit Event'}
           </button>
-
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../supabaseClient'
 
 const categoryDots = {
@@ -13,6 +13,19 @@ const categoryDots = {
   education: 'bg-indigo-500',
   community: 'bg-teal-500',
   festivals: 'bg-rose-500',
+}
+
+const categoryColors = {
+  music: 'bg-purple-100 text-purple-700',
+  food: 'bg-orange-100 text-orange-700',
+  arts: 'bg-pink-100 text-pink-700',
+  sports: 'bg-green-100 text-green-700',
+  family: 'bg-yellow-100 text-yellow-700',
+  theater: 'bg-red-100 text-red-700',
+  business: 'bg-blue-100 text-blue-700',
+  education: 'bg-indigo-100 text-indigo-700',
+  community: 'bg-teal-100 text-teal-700',
+  festivals: 'bg-rose-100 text-rose-700',
 }
 
 const categoryLabels = {
@@ -33,6 +46,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 function CalendarPage() {
   const today = new Date()
+  const navigate = useNavigate()
   const [currentMonth, setCurrentMonth] = useState(today.getMonth())
   const [currentYear, setCurrentYear] = useState(today.getFullYear())
   const [events, setEvents] = useState([])
@@ -104,7 +118,7 @@ function CalendarPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Events Calendar</h1>
-            <p className="text-gray-400 text-sm mt-1">Click a day to see what's happening</p>
+            <p className="text-gray-400 text-sm mt-1">Click a day or event to see details</p>
           </div>
           <Link to="/" className="text-gray-400 hover:text-gray-700 text-sm transition">← Back</Link>
         </div>
@@ -193,24 +207,22 @@ function CalendarPage() {
             {selectedEvents.length === 0 ? (
               <p className="text-gray-400 text-sm">No events on this day.</p>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {selectedEvents.map(function(event) {
                   return (
-                    <div key={event.id} className="flex items-start gap-3 py-3 border-b border-gray-100 last:border-0">
-                      <span className={categoryDots[event.category] + ' w-2 h-2 rounded-full mt-1.5 flex-shrink-0'}></span>
-                      <div className="flex-1">
+                    <div
+                      key={event.id}
+                      onClick={function() { navigate('/event/' + event.id) }}
+                      className="flex items-center gap-3 py-3 px-3 rounded-lg border border-gray-100 hover:border-gray-300 hover:bg-gray-50 cursor-pointer transition"
+                    >
+                      <span className={categoryDots[event.category] + ' w-2 h-2 rounded-full flex-shrink-0'}></span>
+                      <div className="flex-1 min-w-0">
                         <p className="text-gray-900 font-medium">{event.title}</p>
-                        <p className="text-gray-400 text-sm">{event.time || 'Time TBD'}</p>
-                        {event.location_name && <p className="text-gray-400 text-sm">{event.location_name}</p>}
-                        {event.website_url && (
-                          <a href={event.website_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 text-xs hover:text-blue-700 mt-1 inline-block">
-                            More info →
-                          </a>
-                        )}
+                        <p className="text-gray-400 text-sm">{event.time || 'Time TBD'}{event.location_name ? ' · ' + event.location_name : ''}</p>
                       </div>
-                      {event.is_featured && (
-                        <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-full">FEATURED</span>
-                      )}
+                      <span className={categoryColors[event.category] + ' text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0'}>
+                        {categoryLabels[event.category]}
+                      </span>
                     </div>
                   )
                 })}
@@ -232,7 +244,11 @@ function CalendarPage() {
               {monthEvents.map(function(event) {
                 const d = new Date(event.date + 'T00:00:00')
                 return (
-                  <div key={event.id} className="flex items-center gap-4 border border-gray-200 rounded-xl px-4 py-3 hover:border-gray-300 transition">
+                  <div
+                    key={event.id}
+                    onClick={function() { navigate('/event/' + event.id) }}
+                    className="flex items-center gap-4 border border-gray-200 rounded-xl px-4 py-3 hover:border-gray-400 hover:shadow-sm cursor-pointer transition"
+                  >
                     <div className="text-center min-w-10">
                       <p className="text-gray-400 text-xs">{DAYS[d.getDay()]}</p>
                       <p className="text-gray-900 font-bold text-lg leading-none">{d.getDate()}</p>
@@ -242,9 +258,9 @@ function CalendarPage() {
                       <p className="text-gray-900 font-medium truncate">{event.title}</p>
                       <p className="text-gray-400 text-sm truncate">{event.time || ''}{event.location_name ? ' · ' + event.location_name : ''}</p>
                     </div>
-                    {event.is_featured && (
-                      <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0">FEATURED</span>
-                    )}
+                    <span className={categoryColors[event.category] + ' text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0'}>
+                      {categoryLabels[event.category]}
+                    </span>
                   </div>
                 )
               })}

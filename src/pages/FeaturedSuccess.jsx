@@ -7,7 +7,7 @@ function FeaturedSuccess() {
       <p className="text-gray-500 mb-8">We'll apply the featured status to your event within a few hours. Check back soon!</p>
       <a
         href="/"
-        className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+        className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition inline-block"
       >
         Back to Home
       </a>

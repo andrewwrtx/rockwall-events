@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 const categoryColors = {
   music: 'bg-purple-100 text-purple-700',
   food: 'bg-orange-100 text-orange-700',
@@ -38,6 +40,7 @@ const categoryLabels = {
 }
 
 function EventCard({ event }) {
+  const navigate = useNavigate()
   const colorClass = categoryColors[event.category] || 'bg-gray-100 text-gray-600'
   const dotClass = categoryDots[event.category] || 'bg-gray-400'
   const label = categoryLabels[event.category] || event.category
@@ -52,10 +55,13 @@ function EventCard({ event }) {
   }
 
   return (
-    <div className={
-      'bg-white rounded-xl p-5 hover:shadow-md transition relative border ' +
-      (event.is_featured ? 'border-yellow-400 shadow-sm' : 'border-gray-200')
-    }>
+    <div
+      onClick={function() { navigate('/event/' + event.id) }}
+      className={
+        'bg-white rounded-xl p-5 hover:shadow-md transition relative border cursor-pointer ' +
+        (event.is_featured ? 'border-yellow-400 shadow-sm' : 'border-gray-200')
+      }
+    >
       {event.is_featured && (
         <span className="absolute top-3 right-3 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-full">
           FEATURED
@@ -74,20 +80,10 @@ function EventCard({ event }) {
           {event.description && (
             <p className="text-gray-400 text-sm mt-2 line-clamp-2">{event.description}</p>
           )}
-          <div className="mt-3 flex items-center justify-between">
+          <div className="mt-3">
             <span className={colorClass + ' text-xs font-medium px-2 py-0.5 rounded-full'}>
               {label}
             </span>
-            {event.website_url && (
-              <a
-                href={event.website_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 text-xs hover:text-blue-700 transition"
-              >
-                More info →
-              </a>
-            )}
           </div>
         </div>
       </div>

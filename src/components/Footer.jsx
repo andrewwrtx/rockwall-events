@@ -1,8 +1,7 @@
 function Footer() {
   return (
-    <footer className="bg-gray-900 py-12 mt-16">
+    <footer className="bg-gray-900 py-12">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <div className="text-xl mb-3">🎉</div>
         <p className="font-bold text-white text-base">Rockwall Events</p>
         <p className="text-gray-400 text-sm mt-1">Your community events hub for Rockwall, TX</p>
         <div className="flex justify-center gap-8 mt-5 text-gray-500 text-sm">

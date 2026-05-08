@@ -31,7 +31,7 @@ function NewsletterSignup() {
   }
 
   return (
-    <div className="bg-gray-900 py-16 px-6">
+    <div className="bg-gray-900 py-16 px-6 border-t border-gray-800">
       <div className="max-w-xl mx-auto text-center">
         {status === 'success' ? (
           <div>

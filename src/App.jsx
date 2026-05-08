@@ -5,6 +5,8 @@ import SubmitEvent from './pages/SubmitEvent'
 import Admin from './pages/Admin'
 import FeaturedSuccess from './pages/FeaturedSuccess'
 import CalendarPage from './pages/CalendarPage'
+import EventDetail from './pages/EventDetail'
+import WeekendPage from './pages/WeekendPage'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
@@ -22,11 +24,13 @@ function Layout() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/weekend" element={<WeekendPage />} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
           <Route path="/submit" element={<SubmitEvent />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/featured-success" element={<FeaturedSuccess />} />
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/event/:id" element={<EventDetail />} />
         </Routes>
       </main>
       <Footer />
