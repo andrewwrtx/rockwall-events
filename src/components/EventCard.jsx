@@ -45,12 +45,10 @@ function EventCard({ event }) {
   const dotClass = categoryDots[event.category] || 'bg-gray-400'
   const label = categoryLabels[event.category] || event.category
 
-  const formatDate = (dateStr) => {
+  const formatDate = function(dateStr) {
     const date = new Date(dateStr + 'T00:00:00')
     return date.toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
+      weekday: 'short', month: 'short', day: 'numeric',
     })
   }
 
@@ -58,7 +56,7 @@ function EventCard({ event }) {
     <div
       onClick={function() { navigate('/event/' + event.id) }}
       className={
-        'bg-white rounded-xl p-5 hover:shadow-md transition relative border cursor-pointer ' +
+        'bg-white rounded-xl p-4 hover:shadow-md active:bg-gray-50 transition relative border cursor-pointer ' +
         (event.is_featured ? 'border-yellow-400 shadow-sm' : 'border-gray-200')
       }
     >
@@ -68,7 +66,7 @@ function EventCard({ event }) {
         </span>
       )}
       <div className="flex items-start gap-3">
-        <div className={dotClass + ' w-2 h-2 rounded-full mt-2 flex-shrink-0'}></div>
+        <div className={dotClass + ' w-2 h-2 rounded-full mt-1.5 flex-shrink-0'}></div>
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-gray-900 text-base leading-tight pr-16">{event.title}</h3>
           <p className="text-blue-600 text-sm mt-1 font-medium">{formatDate(event.date)}</p>
