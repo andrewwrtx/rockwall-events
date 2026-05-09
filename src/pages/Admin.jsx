@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
 
-const ADMIN_PASSWORD = 'rockwall2026'
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'rockwall@2026!'
 
 function Admin() {
   const [authed, setAuthed] = useState(false)
