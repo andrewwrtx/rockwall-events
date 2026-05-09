@@ -70,9 +70,29 @@ function SubmitEvent() {
     if (error) {
       setErrorMsg('Something went wrong. Please try again.')
       setStatus('idle')
-    } else {
-      setStatus('success')
+      return
     }
+
+    try {
+      await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: form.title,
+          date: form.date,
+          time: form.time,
+          category: form.category,
+          location_name: form.location_name,
+          contact_email: form.contact_email,
+          submitter_name: form.submitter_name,
+          description: form.description,
+        })
+      })
+    } catch (e) {
+      console.log('Email notification failed but submission saved')
+    }
+
+    setStatus('success')
   }
 
   function handleUpgradeToFeatured() {
@@ -134,7 +154,6 @@ function SubmitEvent() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-
         {errorMsg && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm">
             {errorMsg}
